@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version="1.4">
+   <model name="green-alien">
+      <static>true</static>
+      <link name="link">
+         <collision name="collision">
+            <geometry>
+               <mesh>
+                  <uri>model://green-alien/meshes/green-alien.dae</uri>
+                  <scale>0.05 0.05 0.05</scale>
+               </mesh>
+            </geometry>
+         </collision>
+         <visual name="visual">
+            <geometry>
+               <mesh>
+                  <uri>model://green-alien/meshes/green-alien.dae</uri>
+                  <scale>0.05 0.05 0.05</scale>
+               </mesh>
+            </geometry>
+         </visual>
+      </link>
+   </model>
+</sdf>

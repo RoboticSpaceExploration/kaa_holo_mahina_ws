@@ -1,0 +1,42 @@
+-- The C compiler identification is GNU 9.3.0
+-- The CXX compiler identification is GNU 9.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Using CATKIN_DEVEL_PREFIX: /home/long/aws-robomaker-sample-application-open-source-rover/robot_ws/build/martian_detector/devel
+-- Using CMAKE_PREFIX_PATH: /home/long/roselab_ws/devel;/opt/ros/noetic;/opt/zimulator
+-- This workspace overlays: /home/long/roselab_ws/devel;/opt/ros/noetic
+-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Using Debian Python package layout
+-- Found PY_em: /usr/lib/python3/dist-packages/em.py  
+-- Using empy: /usr/lib/python3/dist-packages/em.py
+-- Using CATKIN_ENABLE_TESTING: ON
+-- Call enable_testing()
+-- Using CATKIN_TEST_RESULTS_DIR: /home/long/aws-robomaker-sample-application-open-source-rover/robot_ws/build/martian_detector/test_results
+-- Forcing gtest/gmock from source, though one was otherwise available.
+-- Found gtest sources under '/usr/src/googletest': gtests will be built
+-- Found gmock sources under '/usr/src/googletest': gmock will be built
+-- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") 
+-- Found Threads: TRUE  
+-- Using Python nosetests: /usr/bin/nosetests3
+-- catkin 0.8.10
+-- BUILD_SHARED_LIBS is on
+-- Installing devel-space wrapper /home/long/aws-robomaker-sample-application-open-source-rover/robot_ws/src/martian_detector/nodes/notifier to /home/long/aws-robomaker-sample-application-open-source-rover/robot_ws/build/martian_detector/devel/lib/martian_detector
+-- Installing devel-space wrapper /home/long/aws-robomaker-sample-application-open-source-rover/robot_ws/src/martian_detector/nodes/object_detector to /home/long/aws-robomaker-sample-application-open-source-rover/robot_ws/build/martian_detector/devel/lib/martian_detector
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/long/aws-robomaker-sample-application-open-source-rover/robot_ws/build/martian_detector
+[35m[1mScanning dependencies of target tests[0m
+Built target tests
+-- Install configuration: ""
++ cd /home/long/aws-robomaker-sample-application-open-source-rover/robot_ws/src/martian_detector
++ mkdir -p /home/long/aws-robomaker-sample-application-open-source-rover/robot_ws/install/martian_detector/lib/python3/dist-packages
++ /usr/bin/env PYTHONPATH=/home/long/aws-robomaker-sample-application-open-source-rover/robot_ws/install/martian_detector/lib/python3/dist-packages:/home/long/aws-robomaker-sample-application-open-source-rover/robot_ws/build/martian_detector/lib/python3/dist-packages:/home/long/roselab_ws/devel/lib/python3/dist-packages:/opt/ros/noetic/lib/python3/dist-packages CATKIN_BINARY_DIR=/home/long/aws-robomaker-sample-application-open-source-rover/robot_ws/build/martian_detector /usr/bin/python3 /home/long/aws-robomaker-sample-application-open-source-rover/robot_ws/src/martian_detector/setup.py build --build-base /home/long/aws-robomaker-sample-application-open-source-rover/robot_ws/build/martian_detector install --root=/ --install-layout=deb --prefix=/home/long/aws-robomaker-sample-application-open-source-rover/robot_ws/install/martian_detector --install-scripts=/home/long/aws-robomaker-sample-application-open-source-rover/robot_ws/install/martian_detector/bin
