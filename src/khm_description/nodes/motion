@@ -75,7 +75,6 @@ class OSRMotionControl:
 	# Max value: 100, Min value: -100
 	def send_motor_command(self, data):
 		""" Send motor commands to each wheel motor controller."""
-		rospy.loginfo(data)
 		self.publishers['corner_rf_wheel_rf_controller'].publish( data[0] )
 		self.publishers['bogie_right_wheel_rm_controller'].publish( data[1] )
 		self.publishers['corner_rb_wheel_rb_controller'].publish( data[2] )
@@ -86,7 +85,6 @@ class OSRMotionControl:
 	# Max rotation is 45 degrees.
 	def send_steering_command(self, data):
 		""" Send steering commands to the bogie and rocker. """
-		rospy.loginfo(data)
 		self.publishers['bogie_right_corner_rf_controller'].publish( data[0] )
 		self.publishers['rocker_right_corner_rb_controller'].publish( data[1] )
 		self.publishers['bogie_left_corner_lf_controller'].publish( data[2] )
@@ -97,8 +95,7 @@ class OSRMotionControl:
 		""" Set the current speed of the wheels. Max speed is 100, only go forwards. """
 		
 		# At this time, the robot only moves forward.
-		if speed >= 0:
-			self.send_motor_command([speed*-1, speed*-1, speed*-1, speed, speed, speed])
+		self.send_motor_command([speed*-1, speed*-1, speed*-1, speed, speed, speed])
 		
 	# TODO: Implement granular turing motions. Right now it is set to a constant.
 	def set_turning_angle(self, angular_velocity):

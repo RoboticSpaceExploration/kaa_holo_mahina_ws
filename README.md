@@ -7,8 +7,8 @@ If you have **Ubuntu 20.04 with ROS noetic** installed you can
 simply clone and build this repository like any other ROS workspace:
 
 ```
-git clone git@github.com:RoboticSpaceExploration/kaa_holo_mahina.git
-cd kaa_holo_mahina
+git clone git@github.com:RoboticSpaceExploration/kaa_holo_mahina_ws.git
+cd kaa_holo_mahina_ws
 
 rosdep install --from-paths src --ignore-src -r -y
 
@@ -16,7 +16,7 @@ catkin build -j4
 source devel/setup.bash
 ```
 
-This may also work for other Ubuntu / ROS distributions.
+This also works for Ubuntu 18.04 (ROS melodic) and may work for other distributions as well.
 
 ### What if I don't have Ubuntu or ROS?
 You can [get Docker](https://docs.docker.com/get-docker/) and run the entire workspace in a container. If your computer is logged into your [DockerHub](https://hub.docker.com/) account you can simply run:

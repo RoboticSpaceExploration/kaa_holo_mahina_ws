@@ -1,6 +1,6 @@
 <launch>
   <include
-    file="$(find khm_gazebo)/launch/rover_rocky.launch" />
+    file="$(find khm_gazebo)/launch/rover.launch" />
   <node
     name="tf_footprint_base"
     pkg="tf"
