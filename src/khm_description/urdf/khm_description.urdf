@@ -4,7 +4,16 @@
   <!-- All joints except wheels should be revolute eventually with limits put in, instead
   of continous joints -->
 
-  <!-- Body -->
+  <!-- Rover root: dummy link because Kinematics Dynamics Library (KDL) does not support inertia for root links --> 
+  <link name="rover_root"></link>
+  <gazebo reference="rover_root"></gazebo>
+  <joint name="root_to_body" type="fixed">
+    <parent link="rover_root"/>
+    <child link="body"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Body --> 
   <link name="body">
     <inertial>
       <mass value="2.90211432884294"/>
@@ -41,67 +50,7 @@
       </plugin>
     </sensor>
   </gazebo>
-
-  <!-- LIDAR -->
-  <link name="base_scan">
-    <!--<visual>
-      <origin xyz="-.075 0.03 -.075" rpy="0 -0.275 0"/>
-      <geometry>
-        <mesh filename="package://khm_description/meshes/lds.stl" scale="0.001 0.001 0.001"/>
-      </geometry>
-      <material name="dark"/>
-    </visual>
-    <collision>
-      <origin xyz="0.05 0.03 -0.5125" rpy="0 0 0"/>
-      <geometry>
-        <cylinder length="0.0315" radius="0.055"/>
-      </geometry>
-    </collision>
-    <inertial>
-      <mass value="0.114" />
-      <origin xyz="0 0 0" />
-      <inertia ixx="0.001" ixy="0.0" ixz="0.0"
-               iyy="0.001" iyz="0.0"
-               izz="0.001" />
-    </inertial>-->
-  </link>
-  <joint name="scan_joint" type="fixed">
-    <parent link="body"/>
-    <child link="base_scan"/>
-    <origin xyz="-.075 0.03 -.075" rpy="0 -0.275 0"/>
-  </joint>
-  <gazebo reference="base_scan">
-    <sensor type="ray" name="lds_lfcd_sensor">
-      <pose>0 0 0 0 0 0</pose>
-      <visualize>false</visualize>
-      <update_rate>5</update_rate>
-      <ray>
-        <scan>
-          <horizontal>
-            <samples>360</samples>
-            <resolution>1</resolution>
-            <min_angle>-90</min_angle>
-            <max_angle>90</max_angle>
-          </horizontal>
-        </scan>
-        <range>
-          <min>0.45</min>
-          <max>4.5</max>
-          <resolution>0.015</resolution>
-        </range>
-        <noise>
-          <type>gaussian</type>
-          <mean>0.0</mean>
-          <stddev>0.01</stddev>
-        </noise>
-      </ray>
-      <plugin name="gazebo_ros_lds_lfcd_controller" filename="libgazebo_ros_laser.so">
-        <topicName>scan</topicName>
-        <frameName>base_scan</frameName>
-      </plugin>
-    </sensor>
-  </gazebo>
-
+  
   <!-- Depth Camera -->
   <link name="depthcamera_link">
     <collision>

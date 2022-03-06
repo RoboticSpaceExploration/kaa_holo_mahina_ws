@@ -42,26 +42,26 @@ rover_ns:
     pid: {p: 1, i: 1, d: 1}
 
   # Arm joints 
-  body_arm_shoulder_1_controller:
-    type: effort_controllers/JointPositionController
-    joint: "body_arm_shoulder_1"
-    pid: {p: 1, i: 1, d: 1}
-  arm_shoulder_1_arm_shoulder_2_controller:
-    type: effort_controllers/JointPositionController
-    joint: "arm_shoulder_1_arm_shoulder_2"
-    pid: {p: 1, i: 1, d: 1}
-  arm_shoulder_2_arm_elbow_controller:
-    type: effort_controllers/JointPositionController
-    joint: "arm_shoulder_2_arm_elbow"
-    pid: {p: 1, i: 1, d: 1}
-  arm_elbow_arm_hand_left_controller:
-    type: effort_controllers/JointPositionController
-    joint: "arm_elbow_arm_hand_left"
-    pid: {p: .05, i: 0.05, d: 0.000}
-  arm_elbow_arm_hand_right_controller:
-    type: effort_controllers/JointPositionController
-    joint: "arm_elbow_arm_hand_right"
-    pid: {p: .05, i: 0.05, d: 0.000}
+  #body_arm_shoulder_1_controller:
+  #  type: effort_controllers/JointPositionController
+  #  joint: "body_arm_shoulder_1"
+  #  pid: {p: 1, i: 1, d: 1}
+  #arm_shoulder_1_arm_shoulder_2_controller:
+  #  type: effort_controllers/JointPositionController
+  #  joint: "arm_shoulder_1_arm_shoulder_2"
+  #  pid: {p: 1, i: 1, d: 1}
+  #arm_shoulder_2_arm_elbow_controller:
+  #  type: effort_controllers/JointPositionController
+  #  joint: "arm_shoulder_2_arm_elbow"
+  #  pid: {p: 1, i: 1, d: 1}
+  #arm_elbow_arm_hand_left_controller:
+  #  type: effort_controllers/JointPositionController
+  #  joint: "arm_elbow_arm_hand_left"
+  #  pid: {p: .05, i: 0.05, d: 0.000}
+  #arm_elbow_arm_hand_right_controller:
+  #  type: effort_controllers/JointPositionController
+  #  joint: "arm_elbow_arm_hand_right"
+  #  pid: {p: .05, i: 0.05, d: 0.000}
 
   # Velocity Controllers ---------------------------------------
   # Wheels
@@ -175,56 +175,56 @@ rover_ns:
       has_effort_limits: true
       max_effort: 0.5
     # Arm joints
-    body_arm_shoulder_1:
-      has_position_limits: false
-      has_velocity_limits: true
-      max_velocity: 10.0
-      has_acceleration_limits: true
-      max_acceleration: 1
-      has_jerk_limits: true
-      max_jerk: 10.0
-      has_effort_limits: true
-      max_effort: 0.5
-    arm_shoulder_1_arm_shoulder_2:
-      has_position_limits: false
-      has_velocity_limits: true
-      max_velocity: 10.0
-      has_acceleration_limits: true
-      max_acceleration: 1
-      has_jerk_limits: true
-      max_jerk: 10.0
-      has_effort_limits: true
-      max_effort: 0.5
-    arm_shoulder_2_arm_elbow:
-      has_position_limits: false
-      has_velocity_limits: true
-      max_velocity: 10.0
-      has_acceleration_limits: true
-      max_acceleration: 1
-      has_jerk_limits: true
-      max_jerk: 10.0
-      has_effort_limits: true
-      max_effort: 0.5
-    arm_elbow_arm_hand_left:
-      has_position_limits: false
-      has_velocity_limits: true
-      max_velocity: 10.0
-      has_acceleration_limits: true
-      max_acceleration: 1
-      has_jerk_limits: true
-      max_jerk: 10.0
-      has_effort_limits: true
-      max_effort: 0.5
-    arm_elbow_arm_hand_right:
-      has_position_limits: false
-      has_velocity_limits: true
-      max_velocity: 10.0
-      has_acceleration_limits: true
-      max_acceleration: 1
-      has_jerk_limits: true
-      max_jerk: 10.0
-      has_effort_limits: true
-      max_effort: 0.5
+    #body_arm_shoulder_1:
+    #  has_position_limits: false
+    #  has_velocity_limits: true
+    #  max_velocity: 10.0
+    #  has_acceleration_limits: true
+    #  max_acceleration: 1
+    #  has_jerk_limits: true
+    #  max_jerk: 10.0
+    #  has_effort_limits: true
+    #  max_effort: 0.5
+    #arm_shoulder_1_arm_shoulder_2:
+    #  has_position_limits: false
+    #  has_velocity_limits: true
+    #  max_velocity: 10.0
+    #  has_acceleration_limits: true
+    #  max_acceleration: 1
+    #  has_jerk_limits: true
+    #  max_jerk: 10.0
+    #  has_effort_limits: true
+    #  max_effort: 0.5
+    #arm_shoulder_2_arm_elbow:
+    #  has_position_limits: false
+    #  has_velocity_limits: true
+    #  max_velocity: 10.0
+    #  has_acceleration_limits: true
+    #  max_acceleration: 1
+    #  has_jerk_limits: true
+    #  max_jerk: 10.0
+    #  has_effort_limits: true
+    #  max_effort: 0.5
+    #arm_elbow_arm_hand_left:
+    #  has_position_limits: false
+    #  has_velocity_limits: true
+    #  max_velocity: 10.0
+    #  has_acceleration_limits: true
+    #  max_acceleration: 1
+    #  has_jerk_limits: true
+    #  max_jerk: 10.0
+    #  has_effort_limits: true
+    #  max_effort: 0.5
+    #arm_elbow_arm_hand_right:
+    #  has_position_limits: false
+    #  has_velocity_limits: true
+    #  max_velocity: 10.0
+    #  has_acceleration_limits: true
+    #  max_acceleration: 1
+    #  has_jerk_limits: true
+    #  max_jerk: 10.0
+    #  has_effort_limits: true
+    #  max_effort: 0.5
     # Wheel joints
     corner_lf_wheel_lf:
       has_position_limits: false

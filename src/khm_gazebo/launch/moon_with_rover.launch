@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <arg name="paused" default="false"/>
+	<arg name="use_sim_time" default="true"/>
+	<arg name="gui" default="true"/>
+	<arg name="headless" default="false"/>
+	<arg name="debug" default="false"/>
+	<arg name="verbose" default="true" />
+	<arg name="world" default="$(find khm_gazebo)/worlds/apollo.world"/>
+	
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+	    <arg name="physics" value="ode" />
+		<arg name="world_name" value="$(arg world)"/>
+		<arg name="debug" value="$(arg debug)" />
+		<arg name="gui" value="$(arg gui)" />
+		<arg name="paused" value="$(arg paused)"/>
+		<arg name="use_sim_time" value="$(arg use_sim_time)"/>
+		<arg name="headless" value="$(arg headless)"/>
+		<arg name="verbose" value="$(arg verbose)" />
+	</include>
+
+  <include file="$(find khm_gazebo)/launch/rover_no_sensors.launch"/>
+
+  <!-- DUMMY CAMERA TO FORCE REDNERING -->
+  <group ns="static_camera_robot">
+    <include file="$(find gazebo_hina)/launch/robot.launch">
+      <arg name="robot_name" value="dummy_camera" />
+      <arg name="robot_file" value="$(find gazebo_hina)/urdf/static_camera.urdf" />
+      <arg name="init_x" value="5.0" />
+      <arg name="init_y" value="5.0" />
+      <arg name="init_z" value="5.0" />
+      <arg name="init_R" value="0.0" />
+      <arg name="init_P" value="0.6" />
+      <arg name="init_Y" value="-2.25" />
+    </include>
+  </group>
+</launch>

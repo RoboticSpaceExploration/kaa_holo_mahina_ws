@@ -61,11 +61,13 @@
   <depend>gazebo_ros</depend>
   <depend>gazebo_ros_control</depend>
   <depend>gazebo_plugins</depend>
+  <depend>gazebo_hina</depend>
   <depend>xacro</depend>
   <depend>ros_control</depend>
   <depend>ros_controllers</depend>
   <depend>joint_state_controller</depend>
   <depend>teleop_twist_keyboard</depend>
+  <depend>message_to_tf</depend>
   
   <!-- Support camera operations -->
   <depend>image_transport</depend>
