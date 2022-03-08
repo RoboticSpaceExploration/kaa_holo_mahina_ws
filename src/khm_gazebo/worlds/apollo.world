@@ -18,11 +18,15 @@
 
     <!-- PHYSICS SETTINGS -->
 
-    <gravity>0 0 -1,62</gravity>
-    <physics name='default_physics' default='0' type='ode'>
+    <gravity>0 0 -1.62</gravity>
+    <physics name='default_physics' default='0' type='bullet'>
       <max_step_size>0.01</max_step_size>
       <real_time_factor>1</real_time_factor>
       <real_time_update_rate>100</real_time_update_rate>
+      <ode>
+        <thread_position_correction>100</thread_position_correction>
+        <island_threads>100</island_threads>
+      </ode>
     </physics>
 
     <scene>
@@ -63,26 +67,34 @@
     <model name='heightmap'>
 
       <!-- Hina plugin -->
-      <plugin name="soil_terrain_model" filename="libsoil_terrain_model.so" />
 
       <static>true</static>
+      <plugin name="soil_terrain_model" filename="libsoil_terrain_model.so"/>
+      <plugin name="ow_dynamic_terrain_model" filename="libow_dynamic_terrain_model.so"/>
 
       <link name='terrain-link'>
         <collision name='collision'>
           <geometry>
             <heightmap>
               <uri>model://apollo15_landing_site_1000x1000/materials/textures/NAC_DTM_APOLLO15_E261N0036_257x257+7472+2152.png</uri>
-              <size>50 50 5.0</size>
+              <size>50 50 4.0</size>
               <pos>0 0 0</pos>
             </heightmap>
           </geometry>
+          <surface>
+            <contact>
+              <collide_without_contact>false</collide_without_contact>
+            </contact>
+          </surface>
+
 
           <!-- MAX CONTACTS WITH TERRAIN TO BE DETECTABLE  <max_contacts>100</max_contacts> -->
          
         </collision>
 
         <visual name='terrain-visual'>
-        <plugin name="soil_terrain_visual" filename="libsoil_terrain_visual.so" />
+        <plugin name="ow_dynamic_terrain_visual" filename="libow_dynamic_terrain_visual.so" />
+
           <geometry>
             <heightmap>
 
@@ -93,7 +105,7 @@
               </texture>
 
               <uri>model://apollo15_landing_site_1000x1000/materials/textures/NAC_DTM_APOLLO15_E261N0036_257x257+7472+2152.png</uri>
-              <size>50 50 5.0</size>
+              <size>50 50 4.0</size>
               <pos>0 0 0</pos>
             </heightmap>
           </geometry>

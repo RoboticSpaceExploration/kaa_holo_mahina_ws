@@ -4,7 +4,7 @@
 
       <!-- Spawn a robot into Gazebo. -->
       <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-        args="-urdf -model rover -param robot_description -z 7 -x 0 -y 0"/>
+        args="-urdf -model rover -param robot_description -z 5.5 -x 0 -y 0"/>
 
       <node name="message_to_tf" pkg="message_to_tf" type="message_to_tf" args="odom" respawn="true" />
 
