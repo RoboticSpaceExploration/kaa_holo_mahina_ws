@@ -1,0 +1,4 @@
+[submodule "src/gazebo_hina"]
+	path = src/gazebo_hina
+	url = https://github.com/CactusQ/gazebo_hina/
+	branch = master
