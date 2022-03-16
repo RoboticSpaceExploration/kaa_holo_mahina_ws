@@ -18,7 +18,7 @@
 
     <!-- PHYSICS SETTINGS -->
 
-    <gravity>0 0 -1.62</gravity>
+    <gravity>0 0 -0.162</gravity>
     <physics name='default_physics' default='0' type='bullet'>
       <max_step_size>0.01</max_step_size>
       <real_time_factor>1</real_time_factor>

@@ -111,6 +111,11 @@ catkin_package(
 DEPENDS roscpp gazebo_ros
 )
 
+catkin_add_env_hooks(
+  khm_models
+  SHELLS sh DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/env-hooks)
+
+
 ###########
 ## Build ##
 ###########
