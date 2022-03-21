@@ -18,15 +18,23 @@
 
     <!-- PHYSICS SETTINGS -->
 
-    <gravity>0 0 -0.162</gravity>
+    <gravity>0 0 -0.0</gravity>
     <physics name='default_physics' default='0' type='bullet'>
-      <max_step_size>0.01</max_step_size>
+      <max_step_size>0.001</max_step_size>
       <real_time_factor>1</real_time_factor>
-      <real_time_update_rate>100</real_time_update_rate>
-      <ode>
-        <thread_position_correction>100</thread_position_correction>
-        <island_threads>100</island_threads>
-      </ode>
+      <real_time_update_rate>1000</real_time_update_rate>
+        <ode>
+          <!-- <solver>
+            <type>world</type>
+          </solver>
+          <constraints>
+            <contact_max_correcting_vel>0.5</contact_max_correcting_vel>
+            <contact_surface_layer>0.0001</contact_surface_layer>
+          </constraints> -->
+          <!-- <mu>0.1</mu> -->
+          <thread_position_correction>8</thread_position_correction>
+          <island_threads>8</island_threads>
+       </ode>
     </physics>
 
     <scene>
@@ -70,7 +78,9 @@
 
       <static>true</static>
       <plugin name="soil_terrain_model" filename="libsoil_terrain_model.so"/>
-      <plugin name="ow_dynamic_terrain_model" filename="libow_dynamic_terrain_model.so"/>
+      <!-- <plugin name="ow_dynamic_terrain_model" filename="libow_dynamic_terrain_model.so"/> -->
+      <wheel_radius>0.09</wheel_radius>
+      <wheel_width>0.11</wheel_width>
 
       <link name='terrain-link'>
         <collision name='collision'>
@@ -83,7 +93,11 @@
           </geometry>
           <surface>
             <contact>
-              <collide_without_contact>false</collide_without_contact>
+              <collide_without_contact>true</collide_without_contact>
+              <ode>
+                <max_vel>0.0</max_vel>
+                <min_depth>1</min_depth>
+              </ode>
             </contact>
           </surface>
 
@@ -110,7 +124,6 @@
             </heightmap>
           </geometry>
         </visual>
-
         <sensor name='terrain_contact' type='contact'>
           <contact>
             <collision>collision</collision>

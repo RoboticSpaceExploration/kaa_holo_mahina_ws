@@ -1,22 +1,30 @@
 <?xml version="1.0" ?>
-<robot name="khm_description">
-<!-- xmlns:xacro="http://ros.org/wiki/xacro" -->
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="khm_description">
+<!-- <robot > -->
   <!-- All joints except wheels should be revolute eventually with limits put in, instead
   of continous joints -->
 
   <!-- Rover root: dummy link because Kinematics Dynamics Library (KDL) does not support inertia for root links --> 
   <link name="rover_root"></link>
-  <inertial>
-    <mass value="2.90211432884294"/>
-    <origin rpy="0  0  0" xyz="0  0  0"/>
-    <inertia ixx="0.0449848823959673" ixy="0.00479068637492494" ixz="0.00169663977998625" iyy="0.036095517853809" iyz="0.00496816410158067" izz="0.0468326609946258"/>
-  </inertial>
   <gazebo reference="rover_root"></gazebo>
   <joint name="root_to_body" type="fixed">
     <parent link="rover_root"/>
     <child link="body"/>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 3.14159"/>
   </joint>
+
+  <!-- Depth Camera (Realsense T265)-->
+  <link name="depthcamera_link"></link>
+  <joint name="root_to_depthcamera" type="fixed">
+    <parent link="rover_root"/>
+    <child link="depthcamera_link"/>
+    <origin xyz="0.1 0 -0.2" rpy="0 0 0"/>
+  </joint>
+  
+  <xacro:include filename="$(find realsense_ros_gazebo)/xacro/tracker.xacro"/>
+  <xacro:realsense_T265 sensor_name="camera" parent_link="depthcamera_link" rate="30.0">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+  </xacro:realsense_T265>
 
   <!-- Body --> 
   <link name="body">
@@ -378,7 +386,7 @@
     <collision name="wheel_lf_collision">
       <origin rpy="0  0  0" xyz="0.41838  0.19698 -0.43356"/>
       <geometry>
-        <mesh filename="package://khm_description/meshes/wheel_lf.STL" scale="1 1 1"/>
+        <mesh filename="package://khm_description/meshes/wheel_lf_col.STL" scale="1 1 1"/>
       </geometry>
     </collision>
     <visual name="wheel_lf_visual">
@@ -405,6 +413,21 @@
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
+
+  <!-- <link name="wheel_lf_local"/>
+  <joint name="corner_lf_wheel_lf_local" type="fixed">
+    <parent link="corner_lf"/>
+    <child link="wheel_lf_local"/>
+    <origin rpy="1.575 0.000 3.067" xyz="0.00407 -0.10082 -0.01036"/>
+  </joint> -->
+
+  <link name="wheel_lf_thermal_frame"/>
+  <joint name="corner_lf_wheel_lf_thermal_frame" type="fixed">
+    <parent link="corner_lf"/>
+    <child link="wheel_lf_thermal_frame"/>
+    <origin rpy="1.575 0.000 3.067" xyz="0.0 0.0 0.0"/>
+  </joint>
+
   <link name="imu_wheel_lf_link"/>
   <joint name="imu_wheel_lf_joint" type="fixed">
     <parent link="corner_lf"/>
@@ -427,7 +450,7 @@
     <collision name="wheel_lm_collision">
       <origin rpy="0  0  0" xyz="0.14798  0.20486 -0.50951"/>
       <geometry>
-        <mesh filename="package://khm_description/meshes/wheel_lm.STL" scale="1 1 1"/>
+        <mesh filename="package://khm_description/meshes/wheel_lm_col.STL" scale="1 1 1"/>
       </geometry>
     </collision>
     <visual name="wheel_lm_visual">
@@ -454,6 +477,15 @@
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
+
+  <!-- 
+  <link name="wheel_lm_local"/>
+  <joint name="bogie_left_wheel_lm_local" type="fixed">
+    <parent link="bogie_left"/>
+    <child link="wheel_lm_local"/>
+    <origin rpy="1.575 0.000 3.067" xyz="0.10451 -0.17908  0.07827"/>
+  </joint> -->
+
   <link name="imu_wheel_lm_link"/>
   <joint name="imu_wheel_lm_joint" type="fixed">
     <parent link="bogie_left"/>
@@ -476,7 +508,7 @@
     <collision name="wheel_lb_collision">
       <origin rpy="0  0  0" xyz="-0.15482  0.17979 -0.42848"/>
       <geometry>
-        <mesh filename="package://khm_description/meshes/wheel_lb.STL" scale="1 1 1"/>
+        <mesh filename="package://khm_description/meshes/wheel_lb_col.STL" scale="1 1 1"/>
       </geometry>
     </collision>
     <visual name="wheel_lb_visual">
@@ -503,6 +535,14 @@
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
+
+  <!-- <link name="wheel_lb_local"/>
+  <joint name="corner_lb_wheel_lb_local" type="fixed">
+    <parent link="corner_lb"/>
+    <child link="wheel_lb_local"/>
+    <origin rpy="1.575 0.000 3.067" xyz="0.0076  -0.09914 -0.01061"/>
+  </joint> -->
+
   <link name="imu_wheel_lb_link"/>
   <joint name="imu_wheel_lb_joint" type="fixed">
     <parent link="corner_lb"/>
@@ -525,7 +565,7 @@
     <collision name="wheel_rf_collision">
       <origin rpy="0  0  0" xyz="0.44223  0.20838 -0.08295"/>
       <geometry>
-        <mesh filename="package://khm_description/meshes/wheel_rf.STL" scale="1 1 1"/>
+        <mesh filename="package://khm_description/meshes/wheel_rf_col.STL" scale="1 1 1"/>
       </geometry>
     </collision>
     <visual name="wheel_rf_visual">
@@ -552,6 +592,14 @@
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
+
+  <!-- <link name="wheel_rf_local"/>
+  <joint name="corner_rf_wheel_rf_local" type="fixed">
+    <parent link="corner_rf"/>
+    <child link="wheel_rf_local"/>
+    <origin rpy="1.575 0.000 3.067" xyz="0.00407 -0.10082 -0.01036"/>
+  </joint> -->
+  
   <link name="imu_wheel_rf_link"/>
   <joint name="imu_wheel_rf_joint" type="fixed">
     <parent link="corner_rf"/>
@@ -574,7 +622,7 @@
     <collision name="wheel_rm_collision">
       <origin rpy="0  0  0" xyz="0.18614  0.20777 -0.0068"/>
       <geometry>
-        <mesh filename="package://khm_description/meshes/wheel_rm.STL" scale="1 1 1"/>
+        <mesh filename="package://khm_description/meshes/wheel_rm_col.STL" scale="1 1 1"/>
       </geometry>
     </collision>
     <visual name="wheel_rm_visual">
@@ -601,6 +649,14 @@
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
+
+  <!-- <link name="wheel_rm_local"/>
+  <joint name="bogie_right_wheel_rm_local" type="fixed">
+    <parent link="bogie_right"/>
+    <child link="wheel_rm_local"/>
+    <origin rpy="1.575 0.000 3.067" xyz="0.06634 -0.18198 -0.07859"/>
+  </joint> -->
+
   <link name="imu_wheel_rm_link"/>
   <joint name="imu_wheel_rm_joint" type="fixed">
     <parent link="bogie_right"/>
@@ -623,7 +679,7 @@
     <collision name="wheel_rb_collision">
       <origin rpy="0  0  0" xyz="-0.12196  0.21097 -0.08269"/>
       <geometry>
-        <mesh filename="package://khm_description/meshes/wheel_rb.STL" scale="1 1 1"/>
+        <mesh filename="package://khm_description/meshes/wheel_rb_col.STL" scale="1 1 1"/>
       </geometry>
     </collision>
     <visual name="wheel_rb_visual">
@@ -650,6 +706,14 @@
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
+<!-- 
+  <link name="wheel_rb_local"/>
+  <joint name="corner_rb_wheel_rb_local" type="fixed">
+    <parent link="corner_rb"/>
+    <child link="wheel_rb_local"/>
+    <origin rpy="1.575 0.000 3.067" xyz="0.0076  -0.09914 -0.01061"/>
+  </joint> -->
+
   <link name="imu_wheel_rb_link"/>
   <joint name="imu_wheel_rb_joint" type="fixed">
     <parent link="corner_rb"/>

@@ -7,9 +7,9 @@
 	<arg name="debug" default="false"/>
 	<arg name="verbose" default="true" />
 	<arg name="world" default="$(find khm_gazebo)/worlds/apollo.world"/>
-	<arg name="x" default="0"/>
-	<arg name="y" default="0"/>
-	<arg name="z" default="5.5"/>
+	<arg name="x" default="1"/>
+	<arg name="y" default="1"/>
+	<arg name="z" default="4.5"/>
 	
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">
 	    <arg name="physics" value="ode" />

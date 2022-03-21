@@ -1,10 +1,10 @@
  <launch>
 
- 		<arg name="x" default="0" />
-		<arg name="y" default="1" />
-		<arg name="z" default="2" />
+ 		<arg name="x"/>
+		<arg name="y"/>
+		<arg name="z"/>
     <param name="robot_description"
-      command="$(find xacro)/xacro --inorder '$(find khm_description)/urdf/khm_no_sensors_description.urdf' stereo_camera:=false"/>
+      command="$(find xacro)/xacro '$(find khm_description)/urdf/khm_no_sensors_description.urdf'"/>
 
     <!-- Spawn a robot into Gazebo. -->
     <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"

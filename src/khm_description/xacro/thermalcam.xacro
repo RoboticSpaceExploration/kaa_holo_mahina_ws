@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="thermalcam" params="sensor_name parent_link *origin rate">
+
+    <!-- <xacro:property name="d435_cam_depth_to_left_ir_offset" value="0.0"/> -->
+    <!-- <xacro:property name="d435_cam_depth_to_right_ir_offset" value="-0.050"/> -->
+
+
+    <!-- Thermal camear joint and links -->
+
+    <link name="${sensor_name}_thermal_frame"/>
+
+    <joint name="${sensor_name}_color_optical_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}" />
+      <parent link="${sensor_name}_thermal_frame" />
+      <child link="${sensor_name}_color_optical_frame" />
+    </joint>
+    <link name="${sensor_name}_color_optical_frame"/>
+
+    <!-- gazebo plugin -->
+    <gazebo reference="thermal_frame">
+      <sensor:camera name="thermal_camera_sensor">
+        <imageSize>160 120</imageSize>
+        <imageFormat>R8G8B8</imageFormat>
+        <hfov>90</hfov>
+        <nearClip>0.01</nearClip>
+        <farClip>100</farClip>
+        <updateRate>10</updateRate>
+        <controller:gazebo_ros_thermal_camera name="thermal_camera_controller" plugin="libgazebo_ros_thermal_depth_camera.so">
+          <alwaysOn>true</alwaysOn>
+          <updateRate>10</updateRate>
+          <imageTopicName>/thermal_camera/image_raw</imageTopicName>
+          <cameraInfoTopicName>/thermal_camera/camera_info</cameraInfoTopicName>
+          <frameName>thermal_optical_frame</frameName>
+          <interface:camera name="thermal_camera_iface" />
+        </controller:gazebo_ros_thermal_camera>
+      </sensor:camera>
+    </gazebo>
+  </xacro:macro>
+
+</robot>
