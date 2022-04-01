@@ -103,7 +103,6 @@
     </sensor>
   </gazebo>
 
-
   <!-- Back accelerometer -->
   <!-- <link name="back_imu_rocker_left"/>
   <joint name="rocker_left_back_imu" type="fixed">
@@ -419,7 +418,6 @@
     </actuator>
   </transmission>
   <gazebo reference="corner_rf">
-
   </gazebo>
 
 
