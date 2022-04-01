@@ -1,0 +1,79 @@
+<?xml version="1.0" ?>
+<sdf version='1.5'>
+  <world name='default'>
+  
+    <gui fullscreen='0'>
+    <!-- GUI SETTINGS -->
+    <camera name="user_camera">
+        <track_visual>
+          <name>rover</name>
+          <static>false</static>
+          <use_model_frame>true</use_model_frame>
+          <xyz>1 1 1</xyz>
+          <inherit_yaw>true</inherit_yaw>
+        </track_visual>
+      </camera>
+    </gui>
+
+    <!-- PHYSICS SETTINGS -->
+    <gravity>0 0 -9.807</gravity>
+    <physics name='default_physics' default='0' type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+        <ode>
+          <!-- <solver>
+          <type>world</type>
+          </solver>
+          <constraints>
+            <contact_max_correcting_vel>0.5</contact_max_correcting_vel>
+            <contact_surface_layer>0.0001</contact_surface_layer>
+          </constraints> -->
+       </ode>
+    </physics>
+
+
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+
+    <!-- TERRAIN / HEIGHTMAP -->
+    <model name="terrain">
+    <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.597</mu>
+              </ode>
+            </friction>
+            <contact>
+              <ode>
+                <kp>7.53e7</kp>
+                <kd>8140</kd>
+              </ode>
+            </contact>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+  </world>
+</sdf>

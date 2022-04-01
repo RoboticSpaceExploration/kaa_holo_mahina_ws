@@ -4,34 +4,32 @@
   <gui fullscreen='0'>
 
     <!-- GUI SETTINGS -->
-
-      <camera name="user_camera">
-          <track_visual>
-            <name>rover</name>
-            <static>false</static>
-            <use_model_frame>true</use_model_frame>
-            <xyz>1 1 1</xyz>
-            <inherit_yaw>true</inherit_yaw>
-          </track_visual>
+    <camera name="user_camera">
+        <track_visual>
+          <name>rover</name>
+          <static>false</static>
+          <use_model_frame>true</use_model_frame>
+          <xyz>1 1 1</xyz>
+          <inherit_yaw>true</inherit_yaw>
+        </track_visual>
       </camera>
     </gui>
 
     <!-- PHYSICS SETTINGS -->
-
-    <gravity>0 0 -0.0</gravity>
-    <physics name='default_physics' default='0' type='bullet'>
-      <max_step_size>0.001</max_step_size>
+    <gravity>0 0 -9.807</gravity>
+    <physics name='default_physics' default='0' type='ode'>
+      <max_step_size>0.01</max_step_size>
       <real_time_factor>1</real_time_factor>
-      <real_time_update_rate>1000</real_time_update_rate>
+      <real_time_update_rate>100</real_time_update_rate>
         <ode>
           <!-- <solver>
-            <type>world</type>
+          <type>world</type>
           </solver>
           <constraints>
             <contact_max_correcting_vel>0.5</contact_max_correcting_vel>
             <contact_surface_layer>0.0001</contact_surface_layer>
           </constraints> -->
-          <!-- <mu>0.1</mu> -->
+          <mu>0.597</mu>
           <thread_position_correction>8</thread_position_correction>
           <island_threads>8</island_threads>
        </ode>
@@ -75,13 +73,29 @@
     <model name='heightmap'>
 
       <!-- Hina plugin -->
-
       <static>true</static>
-      <plugin name="soil_terrain_model" filename="libsoil_terrain_model.so"/>
-      <!-- <plugin name="ow_dynamic_terrain_model" filename="libow_dynamic_terrain_model.so"/> -->
-      <wheel_radius>0.09</wheel_radius>
-      <wheel_width>0.11</wheel_width>
+      <plugin name="soil_terrain_model" filename="libsoil_terrain_model.so">
+        <!-- <plugin name="ow_dynamic_terrain_model" filename="libow_dynamic_terrain_model.so"/> -->
 
+        <!-- Wheel params -->
+        <wheel_radius>0.09</wheel_radius>
+        <wheel_width>0.11</wheel_width>
+
+        <!-- Soil properties Zhou et al. 2010, Ishigami 2007-->
+        <cohesion>800</cohesion>
+        <phi>0.6492625</phi>
+        <k_c>1370</k_c>
+        <k_phi>814000</k_phi>
+        <n_0>1.4</n_0>
+        <n_1>0.54</n_1>
+        <a_1>0.365</a_1>
+        <a_2>0.503</a_2>
+        <rho_d>1550</rho_d>
+        <lambda>0.9</lambda>
+        <k_x>0.6</k_x>
+        <k_y>0.6</k_y>
+
+      </plugin>
       <link name='terrain-link'>
         <collision name='collision'>
           <geometry>
@@ -100,15 +114,10 @@
               </ode>
             </contact>
           </surface>
-
-
-          <!-- MAX CONTACTS WITH TERRAIN TO BE DETECTABLE  <max_contacts>100</max_contacts> -->
          
         </collision>
 
         <visual name='terrain-visual'>
-        <plugin name="ow_dynamic_terrain_visual" filename="libow_dynamic_terrain_visual.so" />
-
           <geometry>
             <heightmap>
 

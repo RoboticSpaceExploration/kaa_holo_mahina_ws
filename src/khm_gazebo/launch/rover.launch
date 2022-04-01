@@ -1,10 +1,10 @@
  <launch>
      <param name="robot_description"
-        command="$(find xacro)/xacro --inorder '$(find khm_description)/urdf/khm_description.urdf' stereo_camera:=false"/>
+        command="$(find xacro)/xacro --inorder '$(find khm_description)/urdf/khm_description.urdf'"/>
 
       <!-- Spawn a robot into Gazebo. -->
       <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-        args="-urdf -model rover -param robot_description -z 1 -x -2 -y -2"/>
+        args=" -urdf -model rover -param robot_description -z 0.7"/>
 
       <node name="message_to_tf" pkg="message_to_tf" type="message_to_tf" args="odom" respawn="true" />
 
