@@ -433,7 +433,7 @@
     <collision name="wheel_lf_collision">
       <origin rpy="0  0  0" xyz="0.41838  0.19698 -0.43356"/>
       <geometry>
-        <mesh filename="package://khm_description/meshes/wheel_lf_col.STL" scale="1 1 1"/>
+        <mesh filename="package://khm_description/meshes/simple_wheel_col.STL" scale="1 1 1"/>
       </geometry>
     </collision>
     <visual name="wheel_lf_visual">
@@ -505,7 +505,7 @@
     <collision name="wheel_lm_collision">
       <origin rpy="0  0  0" xyz="0.14798  0.20486 -0.50951"/>
       <geometry>
-        <mesh filename="package://khm_description/meshes/wheel_lm_col.STL" scale="1 1 1"/>
+        <mesh filename="package://khm_description/meshes/simple_wheel_col.STL" scale="1 1 1"/>
       </geometry>
     </collision>
     <visual name="wheel_lm_visual">
@@ -570,7 +570,7 @@
     <collision name="wheel_lb_collision">
       <origin rpy="0  0  0" xyz="-0.15482  0.17979 -0.42848"/>
       <geometry>
-        <mesh filename="package://khm_description/meshes/wheel_lb_col.STL" scale="1 1 1"/>
+        <mesh filename="package://khm_description/meshes/simple_wheel_col.STL" scale="1 1 1"/>
       </geometry>
     </collision>
     <visual name="wheel_lb_visual">
@@ -634,7 +634,7 @@
     <collision name="wheel_rf_collision">
       <origin rpy="0  0  0" xyz="0.44223  0.20838 -0.08295"/>
       <geometry>
-        <mesh filename="package://khm_description/meshes/wheel_rf_col.STL" scale="1 1 1"/>
+        <mesh filename="package://khm_description/meshes/simple_wheel_col.STL" scale="1 1 1"/>
       </geometry>
     </collision>
     <visual name="wheel_rf_visual">
@@ -705,7 +705,7 @@
     <collision name="wheel_rm_collision">
       <origin rpy="0  0  0" xyz="0.18614  0.20777 -0.0068"/>
       <geometry>
-        <mesh filename="package://khm_description/meshes/wheel_rm_col.STL" scale="1 1 1"/>
+        <mesh filename="package://khm_description/meshes/simple_wheel_col.STL" scale="1 1 1"/>
       </geometry>
     </collision>
     <visual name="wheel_rm_visual">
@@ -768,7 +768,7 @@
     <collision name="wheel_rb_collision">
       <origin rpy="0  0  0" xyz="-0.12196  0.21097 -0.08269"/>
       <geometry>
-        <mesh filename="package://khm_description/meshes/wheel_rb_col.STL" scale="1 1 1"/>
+        <mesh filename="package://khm_description/meshes/simple_wheel_col.STL" scale="1 1 1"/>
       </geometry>
     </collision>
     <visual name="wheel_rb_visual">
