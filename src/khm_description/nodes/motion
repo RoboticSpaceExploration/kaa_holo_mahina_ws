@@ -26,11 +26,11 @@ class OSRMotionControl:
 	def __init__(self):
 		rospy.loginfo("Motion control started...")
 		
-		self.robot_width = 45
-		self.robot_length = 76
+		#self.robot_width = 45
+		#self.robot_length = 76
 		self.max_turn_angle_in_radians = 0.78
-		self.speed_scale_factor = 5
-		self.constant_turn_angle_in_radians = 0.4
+		self.speed_scale_factor = 1
+		#self.constant_turn_angle_in_radians = 0.4
 		
 		self.controller_ns = "rover_ns"
 		self.controller_command = "command"
@@ -90,20 +90,21 @@ class OSRMotionControl:
 		self.publishers['bogie_left_corner_lf_controller'].publish( data[2] )
 		self.publishers['rocker_left_corner_lb_controller'].publish( data[3] )
 	
-	# TODO: Implement backwards motion.
 	def set_speed(self, speed):
 		""" Set the current speed of the wheels. Max speed is 100, only go forwards. """
 		
-		# At this time, the robot only moves forward.
+		# First 3 speeds (for all the right wheels) need to be inverted
+		# because the joints z-axis orientation is inverted
 		self.send_motor_command([speed*-1, speed*-1, speed*-1, speed, speed, speed])
 		
-	# TODO: Implement granular turing motions. Right now it is set to a constant.
-	def set_turning_angle(self, angular_velocity):
+	# Implement granular turning motions. Right now it is set to a constant.
+	def set_turning_angle(self, desired_turn_angle):
 		turn_angle_radians = 0.0
-		if (angular_velocity<0):
-			turn_angle_radians = self.constant_turn_angle_in_radians*-1
-		elif (angular_velocity>0):
-			turn_angle_radians = self.constant_turn_angle_in_radians
+		if (desired_turn_angle < 0):
+			turn_angle_radians = max(desired_turn_angle, -self.max_turn_angle_in_radians)
+
+		elif (desired_turn_angle > 0):
+			turn_angle_radians = min(desired_turn_angle, self.max_turn_angle_in_radians)
 		
 		self.send_steering_command([turn_angle_radians*-1, 
 			turn_angle_radians, 
@@ -128,7 +129,7 @@ if __name__ == "__main__":
 	while not rospy.is_shutdown():
 		osr_motion.move_with_cmd_vel()
 		rate.sleep()
-	
+
 
 '''
 # --------- Topic list ----------

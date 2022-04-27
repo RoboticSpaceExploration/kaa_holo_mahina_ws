@@ -19,6 +19,6 @@
 		<arg name="verbose" value="$(arg verbose)" />
 	</include>
 
-  <include file="$(find khm_gazebo)/launch/rover.launch"></include>
+  <include file="$(find khm_gazebo)/launch/rover_no_sensors.launch"></include>
   <node type="rviz" name="rviz" pkg="rviz" args="-d $(find khm_gazebo)/rviz/rover_tf_tree.rviz"/>
 </launch>

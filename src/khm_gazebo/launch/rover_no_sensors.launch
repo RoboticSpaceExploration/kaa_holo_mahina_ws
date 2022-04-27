@@ -1,8 +1,8 @@
  <launch>
 
- 		<arg name="x"/>
-		<arg name="y"/>
-		<arg name="z"/>
+ 		<arg name="x" default="0"/>
+		<arg name="y" default="0"/>
+		<arg name="z" default="0.9"/>
     <param name="robot_description"
       command="$(find xacro)/xacro '$(find khm_description)/urdf/khm_no_sensors_description.urdf'"/>
 
