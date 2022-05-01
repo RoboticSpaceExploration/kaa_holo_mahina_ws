@@ -25,7 +25,7 @@ with open(csvfilename, 'w') as csvfile:
     last_control_input = []
     for topic, msg, t in bag.read_messages(topics=['/cmd_vel', '/gazebo/model_states']):
         if topic == '/cmd_vel':
-            last_control_input = [msg.linear.x, steering_angle]
+            last_control_input = [msg.linear.x, msg.angular.z]
         else:
             if 'rover' in msg.name:
                 rover_index = msg.name.index('rover')
