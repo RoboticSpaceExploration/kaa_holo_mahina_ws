@@ -43,9 +43,21 @@ You can find more info here:
 You can publish control commands to the /cmd_vel topic [by using the keyboard](http://wiki.ros.org/teleop_twist_keyboard) or manually:
 
 ```
-rostopic pub /cmd_vel
+rostopic pub /cmd_vel geometry_msgs/Twist 
+"linear:
+  x: 1.0
+  y: 0.0
+  z: 0.0
+angular:
+  x: 0.0
+  y: 0.0
+  z: 0.1"
 ```
+
+The linear x value controls the desired angular velocity (rad/s) of all 6 wheel joints, where as the angula z value controls the steering angle (radians).
 More info on the msg format here: 
+[ROS Twist message](http://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Twist.html)
+
 
 # How to record data
 Some messages can be recorded through ROS, e.g. rover joint states, model states, D435 sensor, T265 sensor ...
@@ -76,10 +88,10 @@ gz topic --info <TOPIC_NAME>
 [Gazebo - logging and playback](http://gazebosim.org/tutorials?tut=logging_playback)
 
 
-For example, you can record all model states in the simulation to a rosbag named MODEL_STATES.bag by running:
+For example, you can record all model states in the simulation and rover control inputs to a rosbag named MODEL_STATES.bag by running:
 
 ```
-rosbag record -O MODEL_STATES.bag /gazebo/model_states
+rosbag record -O MODEL_STATES.bag /gazebo/model_states /cmd_vel
 ```
 
 Or get the collision of different bodies (wheel, rocker, terrain, ...) including forces and normals as a txt file:
@@ -101,7 +113,7 @@ python rover_state_to_csv.py MODEL_STATES.bag
 
 The output file `MODEL_STATE.csv` will have the format:
 
-[timestamp (nanoseconds), 3D rover pose (meters), roll, pitch, yaw (radians), 3D linear velocity (m/s), 3D angular velocity (rad/s)] 
+[timestamp (nanoseconds), 3D rover pose (meters), roll, pitch, yaw (radians), 3D linear velocity (m/s), 3D angular velocity (rad/s), linear x control input, angular z control input]
 
 You may need to install other dependencies for the rosbag converter:
 

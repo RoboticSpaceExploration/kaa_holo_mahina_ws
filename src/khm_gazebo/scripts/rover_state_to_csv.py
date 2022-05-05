@@ -19,7 +19,7 @@ with open(csvfilename, 'w') as csvfile:
     writer.writerow(["timestamp_ns", "pos_x", "pos_y", "pos_z", "roll", "pitch", "yaw", \
                     "linear_vel_x", "linear_vel_y", "linear_vel_z", \
                     "angular_vel_x", "angular_vel_y", "angular_vel_z", \
-                    "control_forward_vel_mps", "control_steering_angle_rad"])
+                    "control_angular_vel_mps", "control_steering_angle_rad"])
 
     count = 0
     last_control_input = []
